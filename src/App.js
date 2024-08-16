@@ -49,7 +49,11 @@ const App = () => {
       <h1>Weather Dashboard</h1>
       <SearchBar onSearch={handleSearch} />
       <WeatherDisplay weather={weather} />
-      {weather && <button onClick={() => addToFavorites(weather.name)}>Add to Favorites</button>}
+      {weather && (
+        <button className="add-to-favorites" onClick={() => addToFavorites(weather.name)}>
+          Add to Favorites
+        </button>
+      )}
       <FavoritesList 
         favorites={favorites} 
         onSelect={handleFavoriteSelect} 
