@@ -1,11 +1,11 @@
 // import axios from 'axios';
 
-// const API_KEY = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
+// const API_KEY = 'YOUR_API_KEY';
 
 // export const fetchWeather = async (city) => {
 //   try {
 //     const response = await axios.get(
-//       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+//       `https://api.openweathermap.org/data/2.5`
 //     );
 //     return response.data;
 //   } catch (error) {
@@ -15,30 +15,61 @@
 // };
 
 
+// data is not there i the API so i created dummy data for the flow 
+
+
 const dummyWeatherData = {
     'New York': {
       name: 'New York',
-      main: { temp: 22, humidity: 60 },
-      weather: [{ description: 'Clear sky' }],
-      wind: { speed: 5 },
+      main: {
+        temp: 22,
+        humidity: 65,
+      },
+      weather: [
+        { description: 'clear sky' }
+      ],
+      wind: {
+        speed: 3.5
+      }
     },
     'London': {
       name: 'London',
-      main: { temp: 15, humidity: 75 },
-      weather: [{ description: 'Rain' }],
-      wind: { speed: 10 },
+      main: {
+        temp: 18,
+        humidity: 70,
+      },
+      weather: [
+        { description: 'light rain' }
+      ],
+      wind: {
+        speed: 4.1
+      }
     },
     'Tokyo': {
       name: 'Tokyo',
-      main: { temp: 28, humidity: 65 },
-      weather: [{ description: 'Partly cloudy' }],
-      wind: { speed: 3 },
+      main: {
+        temp: 25,
+        humidity: 60,
+      },
+      weather: [
+        { description: 'cloudy' }
+      ],
+      wind: {
+        speed: 2.8
+      }
     },
     'Delhi': {
       name: 'Delhi',
-      main: { temp: 35, humidity: 50 },
-      weather: [{ description: 'Sunny' }],
-      wind: { speed: 8 },
+      main: {
+        temp: 30,
+        humidity: 55,
+      },
+      weather: [
+        { description: 'haze' }
+      ],
+      wind: {
+        speed: 1.5
+      }
     },
   };
   
@@ -53,5 +84,11 @@ const dummyWeatherData = {
         }
       }, 1000);
     });
+  };
+  
+  export const getCitySuggestions = (query) => {
+    return Object.keys(dummyWeatherData).filter((city) =>
+      city.toLowerCase().startsWith(query.toLowerCase())
+    );
   };
   
